@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import freqz
+w = np.arange(-4*np.pi, 4*np.pi + (8*np.pi)/511, 8*np.pi/511)
+num = [2, 1]
+den = [1, -0.6]
+h = freqz(num, den, w)
+plt.subplot(2, 2, 1)
+plt.plot(w/np.pi, np.real(h[1]))
+plt.grid(True)
+plt.title('Real part of H(e^{jw})')
+plt.xlabel('w/pi')
+plt.ylabel('Amplitude')
+plt.subplot(2, 2, 2)
+plt.plot(w/np.pi, np.imag(h[1]))
+plt.grid(True)
+plt.title('Imaginary part of H(e^{jw})')
+plt.xlabel('w/pi')
+plt.ylabel('Amplitude')
+plt.subplot(2, 2, 3)
+plt.plot(w/np.pi, np.abs(h[1]))
+plt.grid(True)
+plt.title('Magnitude Spectrum |H(e^{jw})|')
+plt.xlabel('w/pi')
+plt.ylabel('Amplitude')
+plt.subplot(2, 2, 4)
+plt.plot(w/np.pi, np.angle(h[1]))
+plt.grid(True)
+plt.title('Phase Spectrum arg[H(e^{jw})]')
+plt.xlabel('w/pi')
+plt.ylabel('Phase, radians')
+plt.tight_layout()
+plt.show()

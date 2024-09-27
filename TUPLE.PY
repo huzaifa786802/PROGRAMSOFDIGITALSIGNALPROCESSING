@@ -1,0 +1,6 @@
+fruits=('apple','banana','cherry')
+print(len(fruits))
+print('banana'in fruits)
+print('grape'in fruits)
+print(fruits[0])
+print(fruits[-1])

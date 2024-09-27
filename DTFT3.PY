@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sympy import symbols, fourier_transform, inverse_fourier_transform
+t = np.arange(-2*np.pi, 2*np.pi + 0.01, 0.01)
+M = np.sin(t)
+plt.subplot(3, 1, 1)
+plt.plot(t, M)
+plt.title('Input Signal')
+plt.xlabel('t')
+plt.ylabel('Amplitude')
+a1 = np.fft.fft(M)
+plt.subplot(3, 1, 2)
+plt.plot(t, a1)
+plt.title('Fourier Transform')
+plt.xlabel('t')
+plt.ylabel('Amplitude')
+b1 = np.fft.ifft(a1)
+plt.subplot(3, 1, 3)
+plt.plot(t, b1)
+plt.title('Inverse Fourier Transform')
+plt.xlabel('t')

@@ -1,0 +1,38 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft, fftfreq
+def signal(t):
+    return t * np.sign(-3*t)
+T = 1.0  
+N = 500  
+t = np.linspace(-T, T, N)
+x_t = signal(t)
+X_f = fft(x_t)
+freq = fftfreq(N, d=(2*T/N))
+magnitude = np.abs(X_f)
+angle = np.angle(X_f)
+real_part = np.real(X_f)
+imaginary_part = np.imag(X_f)
+fig, axs = plt.subplots(4, 1, figsize=(10, 15))
+axs[0].plot(freq, magnitude)
+axs[0].set_title('Magnitude of X(Ω)')
+axs[0].set_xlabel('Frequency (Ω)')
+axs[0].set_ylabel('|X(Ω)|')
+axs[0].grid()
+axs[1].plot(freq, angle)
+axs[1].set_title('Angle of X(Ω)')
+axs[1].set_xlabel('Frequency (Ω)')
+axs[1].set_ylabel('∠X(Ω)')
+axs[1].grid()
+axs[2].plot(freq, real_part)
+axs[2].set_title('Real Part of X(Ω)')
+axs[2].set_xlabel('Frequency (Ω)')
+axs[2].set_ylabel('Re{X(Ω)}')
+axs[2].grid()
+axs[3].plot(freq, imaginary_part)
+axs[3].set_title('Imaginary Part of X(Ω)')
+axs[3].set_xlabel('Frequency (Ω)')
+axs[3].set_ylabel('Im{X(Ω)}')
+axs[3].grid()
+plt.tight_layout()
+plt.show()
